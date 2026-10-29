@@ -10,9 +10,7 @@ finished task.
 Usage:
     python3 0-gather_data_from_an_API.py 2
 """
-
 import requests
-
 import sys
 
 API_URL = "https://jsonplaceholder.typicode.com"
@@ -23,15 +21,12 @@ if __name__ == "__main__":
         sys.exit(1)
 
     employee_id = int(sys.argv[1])
-
     user = requests.get("{}/users/{}".format(API_URL, employee_id)).json()
     todos = requests.get(
         "{}/todos".format(API_URL), params={"userId": employee_id}
     ).json()
 
-
     completed = [t.get("title") for t in todos if t.get("completed")]
-
     print("Employee {} is done with task({}/{}):".format(
     user.get("name"), len(completed), len(todos)))
 
