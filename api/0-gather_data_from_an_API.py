@@ -1,5 +1,16 @@
 #!/usr/bin/python3
 
+"""Show how far an employee has got with their TODO list.
+
+Give this script an employee ID and it asks the JSONPlaceholder API
+for that person's name and tasks. It then prints how many tasks they
+have finished out of the total, followed by the title of each
+finished task.
+
+Usage:
+    python3 0-gather_data_from_an_API.py 2
+"""
+
 import requests
 
 import sys
