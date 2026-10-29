@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+
+import requests
+
+import sys
+
+API_URL = "https://jsonplaceholder.typicode.com"
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2 or not sys.argv[1].isdigit():
+        print("usage: {} <employee_id>".format(sys.argv[0]))
+        sys.exit(1)
+
+    employee_id = int(sys.argv[1])
+
+    user = requests.get("{}/users/{}".format(API_URL, employee_id)).json()
+    todos = requests.get(
+        "{}/todos".format(API_URL), params={"userId": employee_id}
+    ).json()
+
+
+    completed = [t.get("title") for t in todos if t.get("completed")]
+
+    print("Employee {} is done with task({}/{}):".format(
+    user.get("name"), len(completed), len(todos)))
+
+    for title in completed: 
+        print("\t{}".format(title))   
