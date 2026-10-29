@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """Show how far an employee has got with their TODO list.
 
 Give this script an employee ID and it asks the JSONPlaceholder API
@@ -27,8 +26,8 @@ if __name__ == "__main__":
     ).json()
 
     completed = [t.get("title") for t in todos if t.get("completed")]
-    print("Employee {} is done with task({}/{}):".format(
-    user.get("name"), len(completed), len(todos)))
+    print("Employee {} is done with tasks({}/{}):".format(
+        user.get("name"), len(completed), len(todos)))
 
-    for title in completed: 
-        print("\t{}".format(title))   
+    for title in completed:
+        print("\t {}".format(title))
